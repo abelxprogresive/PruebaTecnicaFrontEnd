@@ -1,0 +1,29 @@
+
+<button type=button class="btn btn-info" (click)="downloadFile()" style="float:right"> Descargar listado csv</button>
+<button type=button class="btn btn-info" [routerLink]="['/find-card']"> Crear tarjeta</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Pan</th>
+      <th scope="col">Pin</th>
+      <th scope="col">Amount</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let card of list">
+
+      <!-- <th scope="row">1</th> -->
+      <td>{{card.id}}</td>
+      <td>{{card.name}}</td>
+      <td>{{card.pan}}</td>
+      <td style ="-webkit-text-security: disc;">{{card.pin}}</td>
+      <td>{{card.amount}}</td>
+      <td><button type="button" [routerLink]="['/find-card',card.id]" class="btn btn-info">Ver</button></td>
+    </tr>
+
+  </tbody>
+
+</table>

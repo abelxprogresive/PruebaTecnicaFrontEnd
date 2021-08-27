@@ -1,0 +1,57 @@
+
+<div class="row" *ngIf="id">
+  <div class="col-sm">
+  <h4>Detalle Tarjeta </h4>
+  <button [routerLink]="['/find-card']" style="float: right;" class="btn btn-primary">Crear nueva tarjeta</button>
+</div>
+</div>
+<div class="row" *ngIf="!id">
+  <div class="col-sm">
+  <h4>Crear Tarjeta </h4>
+  <button [routerLink]="['/find-card']" style="float: right;" class="btn btn-primary">Crear nueva tarjeta</button>
+</div>
+</div>
+
+<form [formGroup]="cardForm" >
+  <div class="form-group row">
+  <label for="id">Id</label>
+  <input class="form-control"  formControlName="id" id="id" />
+</div>
+
+<div class="form-group row">
+  <label for="name">Name*</label>
+  <input class="form-control"  formControlName="name" id="name"  />
+  <span  class="text-danger" *ngIf="cardForm.get('name').hasError('required')">
+    Campo Name Obligatorio.
+  </span>
+
+</div>
+<div class="form-group row">
+  <label for="pan">Pan</label>
+  <input class="form-control"  formControlName="pan" id="pan" placeholder="Ejemplo: ABCDS1234Y"/>
+  <span  class="text-danger" *ngIf="cardForm.get('pan').errors">
+    Formato Código PAN Inválido.
+  </span>
+</div>
+
+<div class="form-group row">
+  <label for="pin">Pin</label>
+  <input class="form-control" type="password"  formControlName="pin" id="pin"  />
+</div>
+
+<div class="form-group row">
+  <label for="amount">Amount</label>
+  <input class="form-control"  formControlName="amount" id="amount"   />
+</div>
+
+<div class="form-group row">
+  <label for="addbalance">Add Balance</label>
+  <input class="form-control" type="number" formControlName="addbalance" id="addbalance"  />
+</div>
+
+<div class="form-group row">
+  <button [routerLink]="['/list-card']" class="btn btn-light">Volver</button>
+  <button (click)="save()" style="float: right;" class="btn btn-primary">Guardar</button>
+</div>
+
+</form>
